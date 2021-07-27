@@ -16,10 +16,13 @@ We use github to host code, to track issues and feature requests, as well as acc
 
 Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
 
-1. Fork the repo and create your branch from `main`.
+1. Fork the repo and create your branch from **Main**.
 2. If you've added code that should be tested, add tests.
 3. If you've changed APIs, update the documentation.
 4. Ensure the test suite passes.
+   ```js
+    $ npm run test
+   ```
 5. Make sure your code lints.
 6. Issue that pull request!
 
@@ -33,10 +36,6 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 2. Describe Actual Behavior
 3. Provide a example
 4. Provide more informations if to think necessary
-
-## Use a Consistent Coding Style
-
-- You can try running `npm run lint` for style unification
 
 ## License
 

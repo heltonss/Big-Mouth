@@ -1,5 +1,7 @@
 # Big Mouth
 
+### Get a fingerprint of the device of yours users with informations how Browser, Shell, Memory, Language etc...
+
 ![Word of mouth](big_mouth.svg)
 
 ## Table of contents
@@ -62,3 +64,16 @@ Browser.platform();
   - getQuantityMemory: number
   - getCpus: object[]
   - fingerprint: object
+
+<br/>
+<br/>
+
+# Contributing
+
+Confer our [guide](CONTRIBUTING) of contribution.
+<br/>
+<br/>
+
+# License
+
+By contributing, you agree that your contributions will be licensed under its [MIT License](License).
