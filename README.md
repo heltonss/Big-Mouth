@@ -7,8 +7,8 @@
 ## Table of contents
 
 - [Install](#install)
-- [Contributing](contributing)
-- [License](license)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Install
 
