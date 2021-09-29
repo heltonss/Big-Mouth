@@ -11,12 +11,13 @@
   "files": [
     "lib/"
   ],
-  "repository": "git@github.com:heltonss/snitch.git",
+  "repository": "git@github.com:heltonss/bigmouth.git",
   "license": "MIT",
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
-    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "test:ci": "npm run test --ci"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
