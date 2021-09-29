@@ -1,6 +1,6 @@
 {
   "name": "bigmouth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Helton Silveira",
     "email": "helton@heltonsouza.com.br"
@@ -11,12 +11,13 @@
   "files": [
     "lib/"
   ],
-  "repository": "git@github.com:heltonss/bigmouth.git",
+  "repository": "git@github.com:heltonss/Big-Mouth.git",
   "license": "MIT",
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "lint": "eslint src --ext ts --ignore-path",
     "test:ci": "npm run test --ci"
   },
   "devDependencies": {
