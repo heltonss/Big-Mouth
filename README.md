@@ -1,10 +1,18 @@
+<style type="text/css">
+    .image {
+        display: block;
+        width: 500px;
+        margin: 0 auto;
+    }
+</style>
+
 # Big Mouth
 
 ![publish](https://github.com/heltonss/big-mouth/actions/workflows/publish.yml/badge.svg)
 
-### Get a fingerprint of the device of yours users with informations how Browser, Shell, Memory, Language etc...
+### Get a fingerprint of devices of yours users with informations how Browser, Shell, Memory, Language etc... for enviroments web and nodejs.
 
-![Word of mouth](big_mouth.svg)
+<img class="image" src="big_mouth.svg" alt="one person tells a secret to another">
 
 ## Table of contents
 
