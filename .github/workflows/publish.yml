@@ -1,4 +1,4 @@
-name: GitHub Actions BigMouth
+name: publish
 on: [push]
 jobs:
   test:
