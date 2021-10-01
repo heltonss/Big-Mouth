@@ -1,10 +1,11 @@
 # Big Mouth
 
+![test](https://github.com/heltonss/Big-Mouth/actions/workflows/test.yml/badge.svg)
 ![publish](https://github.com/heltonss/Big-Mouth/actions/workflows/publish.yml/badge.svg)
 
-### Get a fingerprint of the device of yours users with informations how Browser, Shell, Memory, Language etc...
+### Get a fingerprint of devices of yours users with informations how Browser, Shell, Memory, Language etc... for enviroments web and nodejs.
 
-![Word of mouth](big_mouth.svg)
+![one person tells a secret to another](big_mouth.svg)
 
 ## Table of contents
 
