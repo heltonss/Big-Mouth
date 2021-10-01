@@ -1,6 +1,6 @@
 # Big Mouth
 
-![publish](https://github.com/heltonss/big-mouth/actions/workflows/publish.yml/badge.svg)
+![publish](https://github.com/heltonss/Big-Mouth/actions/workflows/publish.yml/badge.svg)
 
 ### Get a fingerprint of the device of yours users with informations how Browser, Shell, Memory, Language etc...
 
