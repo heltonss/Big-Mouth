@@ -35,6 +35,8 @@ jobs:
           scope: "@octocat"
       - name: Install dependencies
         run: npm install
+      - name: Semantic Release
+        run: npm run semantic-release
       - name: Publish package
         run: yarn publish
         env:
