@@ -12,7 +12,7 @@ const GeolocationError: GeolocationPositionError = {
   POSITION_UNAVAILABLE: 2,
   TIMEOUT: 3,
   code: 0,
-  message: "",
+  message: '',
 };
 
 export default class Browser {
