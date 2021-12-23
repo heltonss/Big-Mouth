@@ -5,7 +5,7 @@
     "name": "Helton Silveira",
     "email": "helton@heltonsouza.com.br"
   },
-  "description": "Library to get the info of the user almost how a fingerprint in tools for node",
+  "description": "Library to get the info of the user almost how a fingerprint in tools for node and browser",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "files": [
