@@ -1,6 +1,6 @@
 {
   "name": "bigmouth",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "author": {
     "name": "Helton Silveira",
     "email": "helton@heltonsouza.com.br"
@@ -19,7 +19,8 @@
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "lint": "eslint src --ext ts --ignore-path",
     "test:ci": "npm run test --ci",
-    "semantic-release": "semantic-release --branches main"
+    "semantic-release": "semantic-release --branches main",
+    "version-select": "version-select"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -42,6 +43,7 @@
     "ts-jest": "^26.5.5",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
+    "version-select": "^1.0.13",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"

@@ -128,9 +128,6 @@ dist/
 tmp/
 temp/
 
-# dist
-lib/
-
 ### vscode ###
 .vscode/*
 !.vscode/settings.json
