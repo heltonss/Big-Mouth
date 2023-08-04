@@ -1,21 +1,19 @@
-let key = true;
-
-Object.defineProperty(window.navigator, "platform", {
+Object.defineProperty(window.navigator, 'platform', {
   writable: true,
-  value: "MacIntel",
+  value: 'MacIntel',
 });
 
-Object.defineProperty(window.navigator, "language", {
+Object.defineProperty(window.navigator, 'language', {
   writable: true,
-  value: "en-US",
+  value: 'en-US',
 });
 
-Object.defineProperty(window.navigator, "deviceMemory", {
+Object.defineProperty(window.navigator, 'deviceMemory', {
   writable: true,
   value: 8,
 });
 
-Object.defineProperty(window.navigator, "cookieEnabled", {
+Object.defineProperty(window.navigator, 'cookieEnabled', {
   writable: true,
   value: true,
 });

@@ -1,13 +1,9 @@
-import { IFingerprint } from "../interfaces/IFingerprint";
-import uuid from "../uuid";
+/* eslint-disable require-jsdoc */
+import { Fingerprint } from '../interfaces/fingerprint';
+import uuid from '../uuid';
+import { TypeBrowser } from './TypeBrowser';
 
-enum TypeBrowser {
-  CHROME = "chrome",
-  FIREFOX = "firefox",
-  SAFARI = "safari",
-}
-
-const GeolocationError: GeolocationPositionError = {
+export const GeolocationError: GeolocationPositionError = {
   PERMISSION_DENIED: 1,
   POSITION_UNAVAILABLE: 2,
   TIMEOUT: 3,
@@ -30,7 +26,7 @@ export default class Browser {
 
   static getDeviceMemory(): number | string {
     const nav: any = window.navigator;
-    return nav.deviceMemory || "deviceMemory Not Found";
+    return nav.deviceMemory || 'deviceMemory Not Found';
   }
 
   static isCookieEnabled(): boolean {
@@ -50,36 +46,39 @@ export default class Browser {
       return TypeBrowser.SAFARI;
     }
 
-    return "Browser Not Found";
+    return 'Browser Not Found';
   }
 
   static getPositionUser() {
     function showError(error: GeolocationPositionError) {
       switch (error.code) {
         case GeolocationError.PERMISSION_DENIED:
-          return "User denied the request for Geolocation.";
+          throw new Error('User denied the request for Geolocation.');
         case GeolocationError.POSITION_UNAVAILABLE:
-          return "Location information is unavailable.";
+          throw new Error('Location information is unavailable.');
         case GeolocationError.TIMEOUT:
-          return "the request to get user location timed out.";
+          throw new Error('the request to get user location timed out.');
         default:
-          return `error: ${error.code}`;
+          throw new Error(`${error.code}`);
       }
     }
 
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          resolve(pos.coords);
+          if (pos.coords) {
+            resolve(pos.coords);
+          }
         },
         (e: GeolocationPositionError) => {
           reject(showError(e));
-        }
+        },
+        { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true }
       );
     });
   }
 
-  static fingerprint(): IFingerprint {
+  static fingerprint(): Fingerprint {
     return {
       browser: this.getBrowser(),
       language: this.getLanguage(),

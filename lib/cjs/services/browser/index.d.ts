@@ -1,4 +1,5 @@
-import { IFingerprint } from "../interfaces/IFingerprint";
+import { Fingerprint } from '../interfaces/fingerprint';
+export declare const GeolocationError: GeolocationPositionError;
 export default class Browser {
     private static identifyBrowser;
     static getPlatform(): string;
@@ -7,5 +8,5 @@ export default class Browser {
     static isCookieEnabled(): boolean;
     static getBrowser(): string;
     static getPositionUser(): Promise<unknown>;
-    static fingerprint(): IFingerprint;
+    static fingerprint(): Fingerprint;
 }

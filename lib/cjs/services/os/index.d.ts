@@ -1,4 +1,4 @@
-import { IFingerprint } from "../interfaces/IFingerprint";
+import { Fingerprint } from '../interfaces/fingerprint';
 export interface CpuInfo {
     model: string;
     speed: number;
@@ -16,5 +16,5 @@ export default class OperationSystem {
     static getReleaseOS(): string;
     static getQuantityMemory(): number;
     static getCpus(): CpuInfo[];
-    static fingerprint(): IFingerprint;
+    static fingerprint(): Fingerprint;
 }

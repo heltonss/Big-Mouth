@@ -1,5 +1,5 @@
-import { CpuInfo } from "../os";
-export interface IFingerprint {
+import { CpuInfo } from '../os';
+export interface Fingerprint {
     browser?: string;
     deviceMemory?: number | string;
     cookieEnabled?: boolean;

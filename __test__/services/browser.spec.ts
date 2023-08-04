@@ -2,13 +2,13 @@
  * @jest-environment jsdom
  */
 
-import "./mockWindow.js";
-import Browser from "../../src/services/browser";
+import Browser from '../../src/services/browser';
+import './mockWindow.js';
 
-jest.mock("../../src/services/uuid", () => {
+jest.mock('../../src/services/uuid', () => {
   return {
     __esModule: true,
-    default: jest.fn(() => "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"),
+    default: jest.fn(() => '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'),
   };
 });
 
@@ -20,10 +20,10 @@ export const mockNavigatorGeolocation = () => {
   const geolocation = {
     clearWatch: clearWatchMock,
     getCurrentPosition: getCurrentPositionMock,
-    watchPosition: watchPositionMock,
+    watchPosxition: watchPositionMock,
   };
 
-  Object.defineProperty(window.navigator, "geolocation", {
+  Object.defineProperty(window.navigator, 'geolocation', {
     value: geolocation,
     writable: true,
   });
@@ -31,39 +31,45 @@ export const mockNavigatorGeolocation = () => {
   return { clearWatchMock, getCurrentPositionMock, watchPositionMock };
 };
 
-describe("Browser", () => {
-  it("should have get the platform of browser mac intel", () => {
+describe.only('Browser', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.clearAllTimers();
+  });
+
+  it('should have get the platform of browser mac intel', async () => {
     const platform = Browser.getPlatform();
-    expect(platform).toEqual("MacIntel");
+    expect(platform).toEqual('MacIntel');
   });
 
-  it("Should have get the language en-US", () => {
+  it('Should have get the language en-US', async () => {
     const language = Browser.getLanguage();
-    expect(language).toEqual("en-US");
+    expect(language).toEqual('en-US');
   });
 
-  it("Should have get the memory of the device of 8gb", () => {
+  it('Should have get the memory of the device of 8gb', async () => {
+    // test dont have finalize
     const memory = Browser.getDeviceMemory();
     expect(memory).toEqual(8);
   });
 
-  it("Should have get the text deviceMemory Not Found when not found deviceMemory", () => {
-    Object.defineProperty(window.navigator, "deviceMemory", {
+  it('Should have get the text deviceMemory Not Found when not found deviceMemory', async () => {
+    Object.defineProperty(window.navigator, 'deviceMemory', {
       writable: true,
       value: undefined,
     });
 
     const memory = Browser.getDeviceMemory();
-    expect(memory).toEqual("deviceMemory Not Found");
+    expect(memory).toEqual('deviceMemory Not Found');
   });
 
-  it("Should have cookieEnabled true", () => {
+  it('Should have cookieEnabled true', async () => {
     const cookieEnabled = Browser.isCookieEnabled();
     expect(cookieEnabled).toEqual(true);
   });
 
-  it("Should have cookieEnabled false", () => {
-    Object.defineProperty(window.navigator, "cookieEnabled", {
+  it('Should have cookieEnabled false', async () => {
+    Object.defineProperty(window.navigator, 'cookieEnabled', {
       writable: true,
       value: false,
     });
@@ -72,50 +78,50 @@ describe("Browser", () => {
     expect(cookieEnabled).toEqual(false);
   });
 
-  it("Should get the name chrome of the browser", () => {
-    Object.defineProperty(window.navigator, "userAgent", {
+  it('Should get the name chrome of the browser', async () => {
+    Object.defineProperty(window.navigator, 'userAgent', {
       writable: true,
       value:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKxit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36',
     });
 
     const browser = Browser.getBrowser();
-    expect(browser).toEqual("chrome");
+    expect(browser).toEqual('chrome');
   });
 
-  it("Should get the name firefox of the browser", () => {
-    Object.defineProperty(window.navigator, "userAgent", {
+  it('Should get the name firefox of the browser', async () => {
+    Object.defineProperty(window.navigator, 'userAgent', {
       writable: true,
       value:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0",
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0',
     });
 
     const browser = Browser.getBrowser();
-    expect(browser).toEqual("firefox");
+    expect(browser).toEqual('firefox');
   });
 
-  it("Should get the name safari of the browser", () => {
-    Object.defineProperty(window.navigator, "userAgent", {
+  it('Should get the name safari of the browser', async () => {
+    Object.defineProperty(window.navigator, 'userAgent', {
       writable: true,
       value:
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15",
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKxit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15',
     });
 
     const browser = Browser.getBrowser();
-    expect(browser).toEqual("safari");
+    expect(browser).toEqual('safari');
   });
 
-  it("Should get the text Browser Not Found of the browser", () => {
-    Object.defineProperty(window.navigator, "userAgent", {
+  it('Should get the text Browser Not Found of the browser', async () => {
+    Object.defineProperty(window.navigator, 'userAgent', {
       writable: true,
-      value: "",
+      value: '',
     });
 
     const browser = Browser.getBrowser();
-    expect(browser).toEqual("Browser Not Found");
+    expect(browser).toEqual('Browser Not Found');
   });
 
-  it("Should get the latitude = 46.3783335 and longitude = 13.8366675", async () => {
+  it('Should get the latitude = 46.3783335 and longitude = 13.8366675', async () => {
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
     getCurrentPositionMock.mockImplementationOnce((success, error) =>
       Promise.resolve(
@@ -134,60 +140,62 @@ describe("Browser", () => {
     });
   });
 
-  it("Should get the text User denied the request for Geolocation.", async () => {
+  it('Should get the text User denied the request for Geolocation.', async () => {
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
-    getCurrentPositionMock.mockImplementationOnce((success, error) =>
-      Promise.reject(error({ code: 1 }))
+    getCurrentPositionMock.mockImplementationOnce((_, error) =>
+      Promise.reject(error({ code: 1 })).catch((error) => {
+        throw error;
+      })
     );
 
-    return Browser.getPositionUser().catch((e) => {
-      expect(e).toEqual("User denied the request for Geolocation.");
-    });
+    await expect(Browser.getPositionUser()).rejects.toEqual(
+      new Error('User denied the request for Geolocation.')
+    );
   });
 
-  it("Should get the text Location information is unavailable.", () => {
+  it('Should get the text Location information is unavailable.', async () => {
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
-    getCurrentPositionMock.mockImplementationOnce((success, error) =>
-      Promise.reject(error({ code: 2 }))
+    getCurrentPositionMock.mockImplementationOnce((_, error) =>
+      Promise.reject(error({ code: 2 })).catch((error) => {
+        throw error;
+      })
     );
 
-    return Browser.getPositionUser().catch((e) => {
-      expect(e).toEqual("Location information is unavailable.");
-    });
+    await expect(Browser.getPositionUser()).rejects.toEqual(
+      new Error('Location information is unavailable.')
+    );
   });
 
-  it("Should get the text the request to get user location timed out.", () => {
+  it('Should get the text the request to get user location timed out.', async () => {
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
     getCurrentPositionMock.mockImplementationOnce((success, error) =>
       Promise.reject(error({ code: 3 }))
     );
 
-    return Browser.getPositionUser().catch((e) => {
-      expect(e).toEqual("the request to get user location timed out.");
-    });
+    await expect(Browser.getPositionUser()).rejects.toEqual(
+      new Error('the request to get user location timed out.')
+    );
   });
 
-  it("Should get code of error.", () => {
+  it('Should get code of error.', async () => {
     const { getCurrentPositionMock } = mockNavigatorGeolocation();
     getCurrentPositionMock.mockImplementationOnce((success, error) =>
       Promise.reject(error({ code: 6 }))
     );
 
-    return Browser.getPositionUser().catch((e) => {
-      expect(e).toEqual("error: 6");
-    });
+    await expect(Browser.getPositionUser()).rejects.toEqual(new Error('6'));
   });
 
-  it("Should get the fingerprint", () => {
+  it('Should get the fingerprint', async () => {
     const fingerprint = Browser.fingerprint();
 
     expect(fingerprint).toEqual({
-      browser: "Browser Not Found",
+      browser: 'Browser Not Found',
       cookieEnabled: false,
-      deviceMemory: "deviceMemory Not Found",
-      language: "en-US",
-      platform: "MacIntel",
-      id: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      deviceMemory: 'deviceMemory Not Found',
+      language: 'en-US',
+      platform: 'MacIntel',
+      id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
     });
   });
 });
